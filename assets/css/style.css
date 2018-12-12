@@ -1,0 +1,96 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+[hidden] {
+	display: none;
+}
+
+#wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content {
+	width: 50%;
+	padding: 50px;
+}
+
+.item {
+	width: 200px;
+	padding: 20px;
+	border: 1px solid #000;
+	border-radius: 10px;
+	display: block;
+	position: relative;
+}
+
+.indicator {
+	width: 20px;
+	height: 20px;
+	border: 2px solid #000;
+	border-radius: 50%;
+	display: block;
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+input:checked + label > span {
+	color: red;
+}
+
+:checked + label > .indicator:after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 10px;
+	height: 10px;
+	background: #000;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+}
+
+#chart {
+	max-width: 500px;
+	border: 1px solid #000;
+	border-bottom-color: transparent;
+	border-right-color: transparent;
+	position: relative;
+	transform: rotateX(180deg);
+}
+
+input[type=range] {
+	width: 100%;
+	max-width: 500px;
+	margin-top: 20px;
+}
+
+.circle {
+	width: 1px;
+	height: 1px;
+	background: #000;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.showOpacity {
+	opacity: 0;
+	animation: showOpacity .4s forwards;
+}
+
+@keyframes showOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chart</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div id="app">
+    <div id="wrapper">
+        <div class="content">
+            <template v-for="(formula, index) of formulas">
+                <input type="checkbox" hidden :id="`formula` + index" :value="index" v-model="selectedFormulasIndex">
+                <label :for="`formula` + index" class="item">
+                    <span class="title">{{ formula.title }}</span><br>
+                    <span class="formula">{{ formula.formula }}</span>
+                    <span class="indicator"></span>
+                </label>
+            </template>
+        </div>
+        <div class="content">
+            <svg id="chart" viewBox="0 0 1 1">
+                <template v-for="chart of charts">
+                    <circle :cx="dot.x" :cy="dot.y" r="0.005" v-for="(dot, index) in chart.dots" :style="`animation-delay: ${index / 500}s`" class="showOpacity"></circle>
+                    <circle :cx="chart.marker.x" :cy="chart.marker.y" r="0.02"></circle>
+                </template>
+            </svg>
+            <input type="range" min="0" max="100" step="1" v-model="range"><br>
+            <button @click="animate()">Play</button>
+        </div>
+    </div>
+</div>
+
+<script src="assets/js/vue.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
